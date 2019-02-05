@@ -33,6 +33,8 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
         ButterKnife.bind(this);
+
+        getProduct();
     }
 
     @OnClick(R.id.button_add_to_cart)
