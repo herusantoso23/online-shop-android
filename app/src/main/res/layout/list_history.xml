@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="vertical"
+    android:layout_margin="5dp">
+
+    <TextView
+        android:id="@+id/text_product_status"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:text="Waiting for Payment"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:background="@drawable/custom_rounded_corner_yellow"
+        android:layout_gravity="right"
+        android:gravity="center_horizontal|center_vertical"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="Order ID : "
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:maxLines="2"/>
+
+        <TextView
+            android:id="@+id/text_order_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="123AZH189JS-01"
+            android:textSize="16sp"
+            android:layout_marginLeft="5dp"
+            android:textColor="#000"
+            android:maxLines="2"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="right"
+        android:layout_marginLeft="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:maxLines="2"/>
+
+        <TextView
+            android:id="@+id/text_virtual_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="70001087760586526"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/text_product_price"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Rp. 100.000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="right"
+            android:textColor="@color/colorPrimary"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGrey"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>

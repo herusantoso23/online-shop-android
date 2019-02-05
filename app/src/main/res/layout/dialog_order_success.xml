@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/custom_rounded_corner_white"
+        android:padding="20dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_check_circle_green_24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Success"
+            android:textSize="16sp"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please make a payment"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Order ID : "/>
+
+            <TextView
+                android:id="@+id/text_order_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="32131-2121-1212"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Virtual Account : "/>
+
+            <TextView
+                android:id="@+id/text_virtual_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="70001087760586526"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount : Rp. "/>
+
+            <TextView
+                android:id="@+id/text_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100.000"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttom_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:background="@drawable/custom_rounded_corner_blue"
+            android:textColor="#fff"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
