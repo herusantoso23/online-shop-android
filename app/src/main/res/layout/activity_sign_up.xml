@@ -80,14 +80,6 @@
                 android:padding="10dp"
                 android:textColor="@color/colorPrimary" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorGrey"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"/>
-
             <EditText
                 android:id="@+id/edit_password"
                 android:layout_width="match_parent"
@@ -104,42 +96,20 @@
                 android:padding="10dp"
                 android:textColor="@color/colorPrimary" />
 
-            <EditText
-                android:id="@+id/edit_confirm_password"
+
+            <Button
+                android:id="@+id/text_sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Confirm Password"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:textSize="16dp"
-                android:inputType="textPassword"
-                android:background="@drawable/white_transparent"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:padding="10dp"
-                android:textColor="@color/colorPrimary" />
+                android:text="Submit"
+                android:textColor="#ffffff"
+                android:paddingLeft="5dp"
+                android:textSize="12dp"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_rounded_corner_blue"/>
         </LinearLayout>
 
     </ScrollView>
-
-    <LinearLayout
-        android:id="@+id/bottom_layout"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical|center_horizontal"
-        android:background="@drawable/gradient_background">
-
-        <TextView
-            android:id="@+id/text_sign_up"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Submit"
-            android:textColor="#ffffff"
-            android:paddingLeft="5dp"
-            android:textSize="12dp"
-            android:gravity="center"/>
-    </LinearLayout>
 
 </LinearLayout>
