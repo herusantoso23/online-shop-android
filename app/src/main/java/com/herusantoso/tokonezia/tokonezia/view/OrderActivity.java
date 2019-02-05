@@ -112,23 +112,23 @@ public class OrderActivity extends AppCompatActivity {
 
     private void getAllOrder() {
         Cart cart = new Cart();
-        cart.setName("Jaket Sweater Hooide Original Treebeard");
-        cart.setImage("https://s3.bukalapak.com/img/8029743145/w-1000/5510411_cd9e55d0_1696_4aac_ba20_924b6f19616c_1028_1100.jpg");
-        cart.setPrice(new BigDecimal(100000));
+        cart.getProduct().setName("Jaket Sweater Hooide Original Treebeard");
+        cart.getProduct().setImage("https://s3.bukalapak.com/img/8029743145/w-1000/5510411_cd9e55d0_1696_4aac_ba20_924b6f19616c_1028_1100.jpg");
+        cart.getProduct().setPrice(new BigDecimal(100000));
         cart.setQuantity(2);
         carts.add(cart);
 
         Cart cart2 = new Cart();
-        cart2.setName("Jaket Sweater Hooide Original Treebeard");
-        cart2.setImage("https://s3.bukalapak.com/img/3993143145/w-1000/0_f921457f_2c4a_486a_8ec7_f488f700f00f_2048_0.jpg");
-        cart2.setPrice(new BigDecimal(100000));
+        cart2.getProduct().setName("Jaket Sweater Hooide Original Treebeard");
+        cart2.getProduct().setImage("https://s3.bukalapak.com/img/3993143145/w-1000/0_f921457f_2c4a_486a_8ec7_f488f700f00f_2048_0.jpg");
+        cart2.getProduct().setPrice(new BigDecimal(100000));
         cart2.setQuantity(2);
         carts.add(cart2);
 
         Cart cart3 = new Cart();
-        cart3.setName("Jaket Sweater Hooide Original Treebeard");
-        cart3.setImage("https://s2.bukalapak.com/img/2388541934/w-300/Baju_muslim_gamis_dress_wanita_Ruby_2.jpg");
-        cart3.setPrice(new BigDecimal(100000));
+        cart3.getProduct().setName("Jaket Sweater Hooide Original Treebeard");
+        cart3.getProduct().setImage("https://s2.bukalapak.com/img/2388541934/w-300/Baju_muslim_gamis_dress_wanita_Ruby_2.jpg");
+        cart3.getProduct().setPrice(new BigDecimal(100000));
         cart3.setQuantity(2);
         carts.add(cart3);
         cart.setQuantity(2);

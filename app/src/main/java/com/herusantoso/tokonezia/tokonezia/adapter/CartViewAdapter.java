@@ -41,10 +41,10 @@ public class CartViewAdapter extends RecyclerView.Adapter<CartViewAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Cart cart = carts.get(position);
-        holder.textProductName.setText(cart.getName());
-        holder.textProductPrice.setText("Rp." + cart.getPrice().toString());
+        holder.textProductName.setText(cart.getProduct().getName());
+        holder.textProductPrice.setText("Rp." + cart.getProduct().getPrice().toString());
         Glide.with(context)
-                .load(cart.getImage())
+                .load(cart.getProduct().getImage())
                 .placeholder(R.drawable.tokenezia)
                 .into(holder.imageProduct);
     }

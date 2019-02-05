@@ -40,11 +40,11 @@ public class OrderViewAdapter extends RecyclerView.Adapter<OrderViewAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Cart cart = carts.get(position);
-        holder.textProductName.setText(cart.getName());
-        holder.textProductPrice.setText("Rp." + cart.getPrice().toString());
+        holder.textProductName.setText(cart.getProduct().getName());
+        holder.textProductPrice.setText("Rp." + cart.getProduct().getPrice().toString());
         holder.textQuantity.setText(cart.getQuantity().toString());
         Glide.with(context)
-                .load(cart.getImage())
+                .load(cart.getProduct().getImage())
                 .placeholder(R.drawable.tokenezia)
                 .into(holder.imageProduct);
     }
