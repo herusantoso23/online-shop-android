@@ -41,6 +41,7 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Product product = products.get(position);
+        holder.productId = product.getId();
         holder.textProductName.setText(product.getName());
         holder.textProductPrice.setText("Rp." + product.getPrice().toString());
         Glide.with(context)
@@ -63,6 +64,8 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
         @BindView(R.id.text_product_price)
         TextView textProductPrice;
 
+        String productId;
+
         Activity activity;
 
         public ViewHolder(View itemView) {
@@ -76,6 +79,7 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(activity.getApplicationContext(), ProductActivity.class);
+            intent.putExtra("productId", productId);
             activity.startActivity(intent);
         }
     }

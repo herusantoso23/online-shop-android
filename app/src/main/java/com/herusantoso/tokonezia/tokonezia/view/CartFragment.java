@@ -1,6 +1,7 @@
 package com.herusantoso.tokonezia.tokonezia.view;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -11,10 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.reflect.TypeToken;
 import com.herusantoso.tokonezia.tokonezia.R;
 import com.herusantoso.tokonezia.tokonezia.adapter.CartViewAdapter;
 import com.herusantoso.tokonezia.tokonezia.model.Cart;
+import com.herusantoso.tokonezia.tokonezia.model.ResultMessage;
+import com.herusantoso.tokonezia.tokonezia.restapi.RestApi;
+import com.herusantoso.tokonezia.tokonezia.restapi.RestApiDomain;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -24,6 +32,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CartFragment extends Fragment {
 
@@ -39,11 +52,17 @@ public class CartFragment extends Fragment {
     private CartViewAdapter cartViewAdapter;
     private List<Cart> carts = new ArrayList<>();
 
+    SharedPreferences sharedPreferences;
+    String accessToken;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_cart, container, false);
         unbinder = ButterKnife.bind(this, view);
+
+        sharedPreferences = getActivity().getSharedPreferences("mypref", getActivity().MODE_PRIVATE);
+        accessToken = "Bearer " + sharedPreferences.getString("accessToken", null);
 
         rvCart.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         rvCart.setItemAnimator(new DefaultItemAnimator());
@@ -55,44 +74,41 @@ public class CartFragment extends Fragment {
     }
 
     private void getAllCart() {
-        Cart cart = new Cart();
-        cart.setName("Jaket Sweater Hooide Original Treebeard");
-        cart.setImage("https://s3.bukalapak.com/img/8029743145/w-1000/5510411_cd9e55d0_1696_4aac_ba20_924b6f19616c_1028_1100.jpg");
-        cart.setPrice(new BigDecimal(100000));
-        carts.add(cart);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(RestApiDomain.URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-        Cart cart2 = new Cart();
-        cart2.setName("Jaket Sweater Hooide Original Treebeard");
-        cart2.setImage("https://s3.bukalapak.com/img/3993143145/w-1000/0_f921457f_2c4a_486a_8ec7_f488f700f00f_2048_0.jpg");
-        cart2.setPrice(new BigDecimal(100000));
-        carts.add(cart2);
+        RestApi restApi = retrofit.create(RestApi.class);
+        Call<ResultMessage> call = restApi.getAllCart(accessToken);
+        call.enqueue(new Callback<ResultMessage>() {
+            @Override
+            public void onResponse(Call<ResultMessage> call, Response<ResultMessage> response) {
+                if (response.code() == 200) {
+                    Gson gson = new Gson();
+                    JsonArray jsonArray = gson.toJsonTree(response.body().getResult()).getAsJsonArray();
+                    carts = gson.fromJson(jsonArray.toString(), new TypeToken<ArrayList<Cart>>(){}.getType());
 
-        Cart cart3 = new Cart();
-        cart3.setName("Jaket Sweater Hooide Original Treebeard");
-        cart3.setImage("https://s2.bukalapak.com/img/2388541934/w-300/Baju_muslim_gamis_dress_wanita_Ruby_2.jpg");
-        cart3.setPrice(new BigDecimal(100000));
-        carts.add(cart3);
+                    cartViewAdapter = new CartViewAdapter(getActivity(), carts);
+                    rvCart.setAdapter(cartViewAdapter);
+                } else if (response.code() == 400 || response.code() == 500){
+                    Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                } else if (response.code() == 401) {
+                    Toast.makeText(getActivity(), "Session expired, please sign in again", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), SignInActivity.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                }  else{
+                    Toast.makeText(getActivity(), "Please try again later", Toast.LENGTH_SHORT).show();
+                }
+            }
 
-        Cart cart4 = new Cart();
-        cart4.setName("Jaket Sweater Hooide Original Treebeard");
-        cart4.setImage("https://s3.bukalapak.com/img/8040190615/w-1000/20190104_152233.jpg");
-        cart4.setPrice(new BigDecimal(100000));
-        carts.add(cart4);
-
-        Cart cart5 = new Cart();
-        cart5.setName("Jaket Sweater Hooide Original Treebeard");
-        cart5.setImage("https://s2.bukalapak.com/img/2388541934/w-300/Baju_muslim_gamis_dress_wanita_Ruby_2.jpg");
-        cart5.setPrice(new BigDecimal(100000));
-        carts.add(cart5);
-
-        Cart cart6 = new Cart();
-        cart6.setName("Jaket Sweater Hooide Original Treebeard");
-        cart6.setImage("https://s3.bukalapak.com/img/8040190615/w-1000/20190104_152233.jpg");
-        cart6.setPrice(new BigDecimal(100000));
-        carts.add(cart6);
-
-        cartViewAdapter = new CartViewAdapter(getActivity(), carts);
-        rvCart.setAdapter(cartViewAdapter);
+            @Override
+            public void onFailure(Call<ResultMessage> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

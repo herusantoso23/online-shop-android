@@ -41,7 +41,8 @@
                 android:maxLines="1"
                 android:singleLine="true"
                 android:padding="10dp"
-                android:textColor="#fff" />
+                android:textColor="#fff"
+                android:text="herusantoso23"/>
 
             <EditText
                 android:layout_marginTop="10dp"
@@ -59,6 +60,7 @@
                 android:maxLines="1"
                 android:singleLine="true"
                 android:padding="10dp"
+                android:text="welcome1"
                 android:textColor="#fff" />
 
             <Button
