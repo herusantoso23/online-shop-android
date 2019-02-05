@@ -45,7 +45,7 @@ public class OrderViewAdapter extends RecyclerView.Adapter<OrderViewAdapter.View
         holder.textQuantity.setText(cart.getQuantity().toString());
         Glide.with(context)
                 .load(cart.getImage())
-                .placeholder(R.drawable.jaket_swater)
+                .placeholder(R.drawable.tokenezia)
                 .into(holder.imageProduct);
     }
 

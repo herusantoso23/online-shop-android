@@ -45,7 +45,7 @@ public class CartViewAdapter extends RecyclerView.Adapter<CartViewAdapter.ViewHo
         holder.textProductPrice.setText("Rp." + cart.getPrice().toString());
         Glide.with(context)
                 .load(cart.getImage())
-                .placeholder(R.drawable.jaket_swater)
+                .placeholder(R.drawable.tokenezia)
                 .into(holder.imageProduct);
     }
 

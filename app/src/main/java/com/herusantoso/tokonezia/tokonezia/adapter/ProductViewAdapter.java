@@ -45,7 +45,7 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
         holder.textProductPrice.setText("Rp." + product.getPrice().toString());
         Glide.with(context)
                 .load(product.getImage())
-                .placeholder(R.drawable.jaket_swater)
+                .placeholder(R.drawable.tokenezia)
                 .into(holder.imageProduct);
     }
 

@@ -28,7 +28,7 @@
                     android:layout_gravity="center"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/base_mage"
+                    android:src="@drawable/tokenezia"
                     android:scaleType="centerCrop"/>
 
             </RelativeLayout>

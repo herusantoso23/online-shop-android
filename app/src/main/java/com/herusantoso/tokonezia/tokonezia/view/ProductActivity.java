@@ -47,7 +47,7 @@ public class ProductActivity extends AppCompatActivity {
         textShopLocation.setText("Jakarta");
         Glide.with(this)
                 .load("https://s3.bukalapak.com/img/8029743145/w-1000/5510411_cd9e55d0_1696_4aac_ba20_924b6f19616c_1028_1100.jpg")
-                .placeholder(R.drawable.jaket_swater)
+                .placeholder(R.drawable.tokenezia)
                 .into(imageProduct);
 
     }

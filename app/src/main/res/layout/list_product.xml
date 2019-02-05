@@ -13,7 +13,7 @@
             android:id="@+id/image_product"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:src="@drawable/base_mage"
+            android:src="@drawable/tokenezia"
             android:scaleType="centerCrop"
             android:background="@color/colorGrey"/>
 
